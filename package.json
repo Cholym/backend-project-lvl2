@@ -20,8 +20,8 @@
   },
   "homepage": "https://github.com/Cholym/backend-project-lvl2#readme",
   "dependencies": {
-    "commander": "^9.3.0"
+    "commander": "^9.3.0",
+    "lodash": "^4.17.21"
   },
-  "main": "index.js",
-  "devDependencies": {}
+  "main": "index.js"
 }
