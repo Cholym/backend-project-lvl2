@@ -37,12 +37,12 @@ export default (obj1, obj2) => {
   };
 
   const data = {};
-  
+
   const addKeyData = (key) => {
     if (ifAdded(key)) {
       if (obj2[key] !== undefined) {
         data[`+ ${key}`] = obj2[key];
-      }  data[`+ ${key}`] = true;
+      } data[`+ ${key}`] = true;
       return;
     }
     if (ifDeleted(key)) {
@@ -55,8 +55,7 @@ export default (obj1, obj2) => {
       return;
     }
     if (ifUnchanged(key)) {
-      data[` ${key}`] = obj1[key];
-      return;
+      data[`${key}`] = obj1[key];
     }
   };
 
