@@ -10,5 +10,8 @@ publish:
 lint:
 	npx eslint .
 
-jest:
-	npx jest
+test:
+	npm test
+
+test-coverage:
+	npm test -- --coverage --coverageProvider=v8
