@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1659998774863" clover="3.2.0">
-  <project timestamp="1659998774863" name="All files">
+<coverage generated="1660002347247" clover="3.2.0">
+  <project timestamp="1660002347247" name="All files">
     <metrics statements="79" coveredstatements="79" conditionals="23" coveredconditionals="23" methods="10" coveredmethods="10" elements="112" coveredelements="112" complexity="0" loc="79" ncloc="79" packages="1" files="3" classes="3"/>
     <file name="genDiff.js" path="/home/ochab/hexlet-projects/backend-project-lvl2/src/genDiff.js">
       <metrics statements="31" coveredstatements="31" conditionals="10" coveredconditionals="10" methods="5" coveredmethods="5"/>

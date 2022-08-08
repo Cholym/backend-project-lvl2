@@ -6,14 +6,12 @@ env:
   CI: true
 
 jobs:
-  lint:
+  build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.x]
+
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
@@ -22,7 +20,7 @@ jobs:
       - run: make lint
       - run: make test
       
-      - name: Test & Publish Code Climat
+      - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v3.0.0
         env: 
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
