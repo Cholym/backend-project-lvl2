@@ -55,7 +55,7 @@ export default (obj1, obj2) => {
       return;
     }
     if (ifUnchanged(key)) {
-      data[`${key}`] = obj1[key];
+      data[(`  ${key}`)] = obj1[key];
     }
   };
 
