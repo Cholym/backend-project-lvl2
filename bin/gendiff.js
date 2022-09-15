@@ -4,18 +4,6 @@ import genDiff from '../src/index.js';
 
 const program = new Command();
 
-// Commands
-/*
-1. принять файлы в программу →
-— импортировать readfileSync
-— создать переменную
-
-3. json - это строка, нужно «распарсить» два файла в объект, чтобы можно было сравнить
-—JSON.parse - метод, помогающий распарсить данные в объект в переменную
-
-4. написать функцию, чтобы можно было сравнить два эти объекта
-*/
-// Options
 program
   .description('Compares two configuration files and shows a difference.')
   .version('0.0.1', '-V, --version', 'output the version number')
