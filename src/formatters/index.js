@@ -1,8 +1,11 @@
 import makeStylish from './stylish.js';
+import makePlain from './plain.js';
 
 export default (data, format) => {
   if (format === 'stylish') {
     return makeStylish(data);
   }
-  throw new Error('Unknown format. Enter "stylish"');
+  if (format === 'plain') {
+    return makePlain(data);
+  }
 };

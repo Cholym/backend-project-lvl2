@@ -12,3 +12,6 @@
 
 ## Compare nested JSON/YML/YAML files
 [![asciicast](https://asciinema.org/a/521517.svg)](https://asciinema.org/a/521517)
+
+## Compare JSON/YML/YAML files, plain format
+[![asciicast](https://asciinema.org/a/521985.svg)](https://asciinema.org/a/521985)

@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import genDiff from './genDiff.js';
 import parseData from './parsers.js';
-import formatsNav from './formatters/formatsNav.js';
+import formatsNav from './formatters/index.js';
 
 const getExtName = (filepath) => path.extname(filepath);
 

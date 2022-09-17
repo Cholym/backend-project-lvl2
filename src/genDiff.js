@@ -1,5 +1,7 @@
 import _ from 'lodash';
 
+export const isObject = (value) => typeof value === 'object' && value !== null;
+
 const genDiff = (obj1, obj2) => {
   const obj1Keys = _.keys(obj1);
   const obj2Keys = _.keys(obj2);
@@ -11,8 +13,6 @@ const genDiff = (obj1, obj2) => {
   const ifDeleted = (key) => !_.has(obj2, key);
 
   const ifChanged = (key) => obj1[key] !== obj2[key];
-
-  const isObject = (value) => typeof value === 'object' && value !== null;
 
   const addStylishObject = (object) => {
     const entries = _.entries(object);
