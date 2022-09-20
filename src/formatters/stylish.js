@@ -17,14 +17,14 @@ const getValue = (node, depth) => {
   ].join('\n');
 };
 
-export default (data, depth = 1) => {
+const makeStylish = (data, depth = 1) => {
   const indent = space(depth).slice(0, space(depth) - 2);
   const bracketEndIndent = space(depth - 1);
 
   const lines = data.flatMap((diff) => {
     switch (diff.type) {
       case 'nested':
-        return `${indent}  ${diff.key}: ${stylish(diff.children, depth + 1)}`;
+        return `${indent}  ${diff.key}: ${makeStylish(diff.children, depth + 1)}`;
       case 'added':
         return `${indent}+ ${diff.key}: ${getValue(diff.value2, depth + 1)}`;
       case 'deleted':
@@ -47,3 +47,5 @@ export default (data, depth = 1) => {
     `${bracketEndIndent}}`,
   ].join('\n');
 };
+
+export default makeStylish;
