@@ -1,56 +1,41 @@
 import _ from 'lodash';
-import { isObject } from '../genDiff.js';
-
-const formatKey = (key) => key.slice(2);
 
 const formatValue = (value) => {
-  if (isObject(value)) return '[complex value]';
-  if (typeof value === 'string') return `'${value}'`;
+  if (typeof value === 'string') {
+    return `'${value}'`;
+  }
+  if (_.isObject(value)) {
+    return '[complex value]';
+  }
   return value;
 };
 
-export default (data) => {
-  const path = [];
+export default (tree) => {
+  const iter = (node, path) => {
+    const lines = node
+      .map((diff) => {
+        const keyPath = (path === '' ? `${diff.key}` : `${path}.${diff.key}`);
 
-  const analyseObject = (object) => {
-    const entries = _.entries(object);
-    const keys = _.keys(object);
-
-    return entries.reduce((acc, pair) => {
-      const [key, value] = pair;
-
-      if (key.startsWith('-')) {
-        path.push(formatKey(key));
-        const plusKey = `+ ${[formatKey(key)]}`;
-        if (keys.includes(plusKey)) {
-          acc.push(`Property '${path.join('.')}' was updated. From ${formatValue(object[key])} to ${formatValue(object[plusKey])}`);
-        } else {
-          acc.push(`Property '${path.join('.')}' was removed`);
+        switch (diff.type) {
+          case 'nested':
+            return iter(diff.children, keyPath);
+          case 'added':
+            return `Property '${keyPath}' was added with value: ${formatValue(diff.value2)}`;
+          case 'deleted':
+            return `Property '${keyPath}' was removed`;
+          case 'changed':
+            return `Property '${keyPath}' was updated. From ${formatValue(diff.value1)} to ${formatValue(diff.value2)}`;
+          case 'unchanged':
+            return null;
+          default:
+            throw new Error(`Unknown type of diff: ${diff.type}`);
         }
-        path.pop();
-        return acc;
-      }
+      });
 
-      if (key.startsWith('+')) {
-        path.push(formatKey(key));
-        if (!keys.includes(`- ${formatKey(key)}`)) {
-          acc.push(`Property '${path.join('.')}' was added with value: ${formatValue(value)}`);
-        }
-        path.pop();
-        return acc;
-      }
-
-      if (isObject(value)) {
-        path.push(formatKey(key));
-        acc.push(analyseObject(value));
-      } else if (key.startsWith('  ')) {
-        return acc;
-      }
-      path.pop();
-      return acc;
-    }, []);
+    return [...lines]
+      .filter(Boolean)
+      .join('\n');
   };
 
-  const result = analyseObject(data);
-  return result.flat(Infinity).join('\n');
+  return iter(tree, '');
 };

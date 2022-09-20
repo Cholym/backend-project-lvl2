@@ -12,10 +12,10 @@ const readResultStylish = readFileSync(getFixturePath('stylishResult.txt'), 'utf
 const readResultPlain = readFileSync(getFixturePath('plainResult.txt'), 'utf-8');
 const readResultJSON = readFileSync(getFixturePath('jsonResult.txt'), 'utf-8');
 
-test('JSON differences', () => {
+test('stylish JSON differences', () => {
   expect(formattedDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'stylish')).toEqual(readResultStylish);
 });
-test('YML differences', () => {
+test('stylish YML differences', () => {
   expect(formattedDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'), 'stylish')).toEqual(readResultStylish);
 });
 test('plain JSON differences', () => {
