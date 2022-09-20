@@ -17,7 +17,7 @@ const getValue = (node, depth) => {
   ].join('\n');
 };
 
-const stylish = (data, depth = 1) => {
+export default (data, depth = 1) => {
   const indent = space(depth).slice(0, space(depth) - 2);
   const bracketEndIndent = space(depth - 1);
 
@@ -47,5 +47,3 @@ const stylish = (data, depth = 1) => {
     `${bracketEndIndent}}`,
   ].join('\n');
 };
-
-export default stylish;
