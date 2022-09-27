@@ -7,7 +7,9 @@ export default (data, format) => {
       return JSON.stringify(data);
     case 'plain':
       return makePlain(data);
-    default:
+    case 'stylish':
       return makeStylish(data);
+    default:
+      throw new Error('Unsupported format. Accepts only YAML and JSON files')
   }
 };

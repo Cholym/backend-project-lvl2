@@ -1,4 +1,4 @@
 node_modules
 .vscode
-sketch
+sketch.js
 coverage

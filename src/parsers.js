@@ -1,11 +1,12 @@
 import yaml from 'js-yaml';
 
-const parseData = (extName, fileData) => {
-  if (extName === '.json') {
-    return JSON.parse(fileData);
+const parseData = (dataFormat, data) => {
+  const formattedFormat = dataFormat.slice(1);
+  if (formattedFormat === 'json') {
+    return JSON.parse(data);
   }
-  if (extName === '.yml' || extName === '.yaml') {
-    return yaml.load(fileData);
+  if (formattedFormat === 'yml' || formattedFormat === 'yaml') {
+    return yaml.load(data);
   }
   throw new Error('Unsupported format. Accepts only YAML and JSON files');
 };
