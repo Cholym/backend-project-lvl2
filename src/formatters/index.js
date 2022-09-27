@@ -10,6 +10,6 @@ export default (data, format) => {
     case 'stylish':
       return makeStylish(data);
     default:
-      throw new Error('Unsupported format. Accepts only YAML and JSON files')
+      throw new Error('Unsupported format. Accepts only YAML and JSON files');
   }
 };
